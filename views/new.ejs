@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add New Movie</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header class="navbar">
+    <div class="logo">
+        <span class="logo-mark">MW</span>
+        <span class="logo-text">Movie Watchlist</span>
+    </div>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/movies">Movies</a>
+        <a href="/movies/new">Add Movie</a>
+    </nav>
+</header>
+
+<main class="container">
+    <h1>Add a New Movie 🎬</h1>
+
+    <form action="/movies" method="POST" class="form-card">
+        <div class="form-group">
+            <label>Title:</label>
+            <input type="text" name="title" required>
+        </div>
+
+        <div class="form-group">
+            <label>Genre:</label>
+            <input type="text" name="genre">
+        </div>
+
+        <div class="form-group">
+            <label>Year:</label>
+            <input type="number" name="year">
+        </div>
+
+        <div class="form-group">
+            <label>Rating (0–10):</label>
+            <input type="number" name="rating" min="0" max="10">
+        </div>
+
+        <div class="form-group checkbox">
+            <label>Watched:</label>
+            <input type="checkbox" name="watched">
+        </div>
+
+        <button type="submit" class="btn primary">Save Movie</button>
+    </form>
+
+    <p><a href="/movies" class="link-back">⬅ Back to Movie List</a></p>
+</main>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Watchlist</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header class="navbar">
+    <div class="logo">
+        <span class="logo-mark">MW</span>
+        <span class="logo-text">Movie Watchlist</span>
+    </div>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/movies">Movies</a>
+        <a href="/movies/new">Add Movie</a>
+    </nav>
+</header>
+
+<main class="container">
+    <h1>My Movie Watchlist 🎬</h1>
+
+    <p class="top-link">
+        <a href="/movies/new" class="btn primary">➕ Add a New Movie</a>
+    </p>
+
+    <table class="movie-table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Genre</th>
+                <th>Year</th>
+                <th>Rating</th>
+                <th>Watched</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% movies.forEach(movie => { %>
+                <tr>
+                    <td><a href="/movies/<%= movie._id %>"><%= movie.title %></a></td>
+                    <td><%= movie.genre %></td>
+                    <td><%= movie.year || "" %></td>
+                    <td><%= movie.rating || "" %></td>
+                    <td><%= movie.watched ? "Yes" : "No" %></td>
+                    <td class="actions">
+                        <a href="/movies/<%= movie._id %>/edit" class="btn small">✏️ Edit</a>
+
+                        <form action="/movies/<%= movie._id %>?_method=DELETE"
+                              method="POST"
+                              onsubmit="return confirm('Are you sure you want to delete this movie?');"
+                              style="display:inline;">
+                            <button type="submit" class="btn small danger">🗑 Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>

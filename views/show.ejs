@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= movie.title %> - Details</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header class="navbar">
+    <div class="logo">
+        <span class="logo-mark">MW</span>
+        <span class="logo-text">Movie Watchlist</span>
+    </div>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/movies">Movies</a>
+        <a href="/movies/new">Add Movie</a>
+    </nav>
+</header>
+
+<main class="container">
+    <h1><%= movie.title %></h1>
+
+    <div class="details-card">
+        <p><strong>Genre:</strong> <%= movie.genre || "N/A" %></p>
+        <p><strong>Year:</strong> <%= movie.year || "N/A" %></p>
+        <p><strong>Rating:</strong> <%= movie.rating || "N/A" %></p>
+        <p><strong>Watched:</strong> <%= movie.watched ? "Yes" : "No" %></p>
+    </div>
+
+    <p>
+        <a href="/movies/<%= movie._id %>/edit" class="btn small">✏️ Edit</a>
+        <a href="/movies" class="link-back">⬅ Back to List</a>
+    </p>
+</main>
+</body>
+</html>

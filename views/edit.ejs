@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit <%= movie.title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header class="navbar">
+    <div class="logo">
+        <span class="logo-mark">MW</span>
+        <span class="logo-text">Movie Watchlist</span>
+    </div>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/movies">Movies</a>
+        <a href="/movies/new">Add Movie</a>
+    </nav>
+</header>
+
+<main class="container">
+    <h1>Edit Movie: <%= movie.title %></h1>
+
+    <form action="/movies/<%= movie._id %>?_method=PUT" method="POST" class="form-card">
+        <div class="form-group">
+            <label>Title:</label>
+            <input type="text" name="title" value="<%= movie.title %>" required>
+        </div>
+
+        <div class="form-group">
+            <label>Genre:</label>
+            <input type="text" name="genre" value="<%= movie.genre %>">
+        </div>
+
+        <div class="form-group">
+            <label>Year:</label>
+            <input type="number" name="year" value="<%= movie.year %>">
+        </div>
+
+        <div class="form-group">
+            <label>Rating (0–10):</label>
+            <input type="number" name="rating" min="0" max="10" value="<%= movie.rating %>">
+        </div>
+
+        <div class="form-group checkbox">
+            <label>Watched:</label>
+            <input type="checkbox" name="watched" <%= movie.watched ? "checked" : "" %>>
+        </div>
+
+        <button type="submit" class="btn primary">Update Movie</button>
+    </form>
+
+    <p><a href="/movies" class="link-back">⬅ Back to Movie List</a></p>
+</main>
+</body>
+</html>
